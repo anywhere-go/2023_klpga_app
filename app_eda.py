@@ -7,7 +7,7 @@ import seaborn as sns
 def run_app_eda():
     st.subheader('데이터 분석')
 
-    df = pd.read_csv('data/2023_klpga.csv', encoding ='ISO-8859-1')#한글 처리 encoding
+    df = pd.read_csv('data/20230531_klpga.csv',encoding='cp949')#한글 처리 encoding='cp949'encoding ='ISO-8859-1'
 
     print(df)
 
@@ -19,7 +19,7 @@ def run_app_eda():
 
     st.subheader('최대 / 최소 데이터 확인하기')
 
-    column = st.selectbox('컬럼을 선택하세요.', df.columns[3:]) # 3번째 컬럼 Gender부터 끝까지 슬라이싱
+    column = st.selectbox('컬럼을 선택하세요.', df.columns[4:]) # 3번째 컬럼 Gender부터 끝까지 슬라이싱
     st.text('최대 데이터')
     st.dataframe(df.loc[df[column] == df[column].max(),]) #"Age"->column 변수로 바꿈
     st.text('최소 데이터')

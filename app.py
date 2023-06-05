@@ -6,14 +6,19 @@ import seaborn as sns
 from app_home import run_app_home
 from app_eda import run_app_eda
 from app_ml import run_app_ml
+from streamlit_option_menu import option_menu
+
 def main():
 
 
     st.title('KLPGA 상금 예측 앱')
 
-    menu = ['Home', 'EDA', 'ML']
+    menu = ['홈', '탐색적 데이터분석', '머신러닝']
 
-    choice = st.sidebar.selectbox('메뉴', menu)
+    with st.sidebar:
+        choice = option_menu("메뉴", menu, 
+            icons=['house', 'file-bar-graph', 'graph-up-arrow'], menu_icon="cast", default_index=0)
+        
 
     if choice == menu[0]:
         run_app_home()
