@@ -6,7 +6,7 @@ import math
 
 
 def run_app_ml():
-    st.subheader('자료를 입력해 보시면 놀라운 일이 생깁니다!')
+    st.subheader('기록을 입력해 보세요!')
 
     
     age = st.number_input('나이 입력', 18, 100)

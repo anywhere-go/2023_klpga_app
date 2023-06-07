@@ -17,7 +17,7 @@ def main():
 
     with st.sidebar:
         choice = option_menu("메뉴", menu, 
-            icons=['house', 'file-bar-graph', 'graph-up-arrow'], menu_icon="cast", default_index=0)
+            icons=['house', 'graph-up-arrow','file-bar-graph'], menu_icon="cast", default_index=0)
         
 
     if choice == menu[0]:
