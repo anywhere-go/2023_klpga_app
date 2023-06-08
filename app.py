@@ -11,7 +11,8 @@ from streamlit_option_menu import option_menu
 def main():
 
 
-    st.title('KLPGA 상금 예측 앱')
+    st.title('KLPGA Tour 상금 예측 앱')
+    st.sidebar.image('data/a_logo1.png', caption='Golf Analytics')#로고 추가
 
     menu = ['홈', '탐색적 데이터분석', '머신러닝']
 

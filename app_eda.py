@@ -20,7 +20,7 @@ def run_app_eda():
 
     st.subheader('최대 / 최소 기록 데이터 확인하기')
 
-    column = st.selectbox('컬럼을 선택하세요.', df.columns[4:-3]) # 3번째 컬럼 Gender부터 끝까지 슬라이싱
+    column = st.selectbox('컬럼을 선택하세요.', df.columns[4:-3]) # 4번째 컬럼 age부터 끝에서 3번째까지 슬라이싱
     st.text('최대기록 데이터')
     st.dataframe(df.loc[df[column] == df[column].max(),]) #"Age"->column 변수로 바꿈
     st.text('최소기록 데이터')
@@ -28,13 +28,15 @@ def run_app_eda():
     
     st.subheader('관심 선수 검색')
     name = st.text_input('이름을 입력하세요: ')
+    # st.table(df.loc[df['Player'].str.contains(name)])
     st.dataframe(df.loc[df['Player'].str.contains(name)])
 
-    st.subheader('관심 혈액형 검색')
-    type = st.text_input('혈액형을 입력하세요: ')
+    # st.subheader('관심 혈액형 검색')
+    # type = st.text_input('혈액형을 입력하세요: ')
     # result = (df.loc[df['Bloodtype'] == type])
-    # st.dataframe(result)
-    st.dataframe(df.loc[df['Bloodtype'].str.contains(type)])
+    # st.table(result) #table no good
+
+    # st.dataframe(df.loc[df['Bloodtype'].str.contains(type)]) 
     
     
     #유저 컬럼선택 빈 선택
@@ -44,7 +46,7 @@ def run_app_eda():
 
     fig = plt.figure()
     df[column].hist(bins =bins)
-    # plt.show() #주피터용
+    # plt.show() #주피터에서만 사용
 
     plt.title(column +' Histogram')
     plt.xlabel(column)
@@ -53,7 +55,7 @@ def run_app_eda():
     st.pyplot(fig)
 
     st.subheader('상관 관계 분석')
-
+    # column_list = st.multiselect('상관분석 하고 싶은 컬럼을 선택하세요.', ('나이', '평균 타수', 'O형','AB형'))
     column_list = st.multiselect('상관분석 하고 싶은 컬럼을 선택하세요.', df.columns[4:-3])
     print(column_list)
     
@@ -72,6 +74,7 @@ def run_app_eda():
 
     # st.pyplot.(ratio, labels=labels, autopct='%.1f%%')
     # Pie chart, where the slices will be ordered and plotted counter-clockwise:
+    st.text('2023년 한국여자프로골프선수 혈액형 분포')
     labels = 'A', 'B', 'O', 'AB'
     sizes = [41, 29, 31, 20]
     explode = (0, 0, 0, 0.1)  # only "explode" the 2nd slice (i.e. 'AB형')
@@ -83,6 +86,7 @@ def run_app_eda():
 
     st.pyplot(fig3)
 
+    st.text('2020년 대한적십자사 혈액형별 헌혈통계')
     labels = 'A', 'B', 'O', 'AB'
     sizes = [34.1, 26.5, 27.9, 11.5]
     explode = (0, 0, 0, 0)  # only "explode" the 2nd slice (i.e. 'A형')
